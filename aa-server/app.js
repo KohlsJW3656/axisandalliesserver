@@ -63,7 +63,7 @@ app.delete('/product', (request, response) => {
 });
 
 
-const port = 6000;
+const port = 443;
 app.listen(port, () => {
 	console.log(`we are inside port ${port}!`);
 });

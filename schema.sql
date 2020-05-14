@@ -10,7 +10,7 @@ CREATE TABLE product (
 	p_id INT,
 	p_name VARCHAR(40),
 	p_cost INT,
-	PRIMARY KEY(p_id),
+	PRIMARY KEY(p_id)
 );
 CREATE TABLE country (
         c_id INT NOT NULL,
@@ -58,6 +58,5 @@ CREATE TABLE countryresearch (
         turn INT NOT NULL,
 	FOREIGN KEY(c_id) REFERENCES country(c_id),
 	FOREIGN KEY(res_id) REFERENCES research(res_id)
-
 );
 

@@ -11,13 +11,11 @@ CREATE TABLE product (
 	p_name VARCHAR(40),
 	p_cost INT,
 	PRIMARY KEY(p_id),
-	is_deleted INT DEFAULT 0,
-	created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-	updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 CREATE TABLE country (
         c_id INT NOT NULL,
         c_name VARCHAR(30) NOT NULL,
+        ipsc INT NOT NULL,
 	PRIMARY KEY(c_id)
 );
 CREATE TABLE purchase (

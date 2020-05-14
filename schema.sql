@@ -19,6 +19,7 @@ CREATE TABLE country (
 	PRIMARY KEY(c_id)
 );
 CREATE TABLE purchase (
+        season_year VARCHAR(20) NOT NULL,
         p_id INT NOT NULL,
         amount INT NOT NULL,
         c_id INT NOT NULL,

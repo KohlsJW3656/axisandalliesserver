@@ -28,8 +28,8 @@ function rowToObject(row) {
 }
 
 app.get('/country/:c_id/:c_name/:ipcs', (request, response) => {
+        const query = 'SELECT * FROM country WHERE c_id = ? ORDER BY c_id DESC';
         const params = [request.params.c_id];
-	const query = 'SELECT * FROM country WHERE c_id = ? ORDER BY c_id DESC';
 	connection.query(query, params, (error, row) => {
 		response.send({
 			ok: true,
@@ -85,7 +85,7 @@ app.delete('/product', (request, response) => {
 
 */
 
-const port = 8442;
+const port = 8300;
 app.listen(port, () => {
 	console.log(`We're live on port ${port}!`);
 });

@@ -123,7 +123,7 @@ INSERT INTO research(res_id, res_name) VALUES (5, "Improved Mechanized Infantry"
 INSERT INTO research(res_id, res_name) VALUES (6, "Super Submarines");
 INSERT INTO research(res_id, res_name) VALUES (7, "Jet Fighters");
 INSERT INTO research(res_id, res_name) VALUES (8, "Radar");
-INSERT INTO research(res_id, res_name) VALUES (9, "Improved Shipyards");INSERT INTO research(res_id, res_name) VALUES (0, "Advanced Artillery");
+INSERT INTO research(res_id, res_name) VALUES (9, "Improved Shipyards");
 INSERT INTO research(res_id, res_name) VALUES (10, "Long Range Aircraft");
 INSERT INTO research(res_id, res_name) VALUES (11, "Heavy Bombers");
 

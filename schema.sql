@@ -16,7 +16,7 @@ CREATE TABLE product (
 CREATE TABLE country (
         c_id INT NOT NULL,
         c_name VARCHAR(30) NOT NULL,
-        ipsc INT NOT NULL,
+        ipcs INT NOT NULL,
 	PRIMARY KEY(c_id)
 );
 CREATE TABLE purchase (
@@ -60,16 +60,16 @@ CREATE TABLE countryresearch (
 	FOREIGN KEY(c_id) REFERENCES country(c_id),
 	FOREIGN KEY(res_id) REFERENCES research(res_id)
 );
-INSERT INTO country(c_id, c_name, ipsc) VALUES (0, "Germany", 30);
-INSERT INTO country(c_id, c_name, ipsc) VALUES (1, "Soviet Union", 37);
-INSERT INTO country(c_id, c_name, ipsc) VALUES (2, "Japan", 26);
-INSERT INTO country(c_id, c_name, ipsc) VALUES (3, "United States", 52);
-INSERT INTO country(c_id, c_name, ipsc) VALUES (4, "China", 12);
-INSERT INTO country(c_id, c_name, ipsc) VALUES (5, "United Kingdom Europe", 28);
-INSERT INTO country(c_id, c_name, ipsc) VALUES (6, "United Kingdom Pacific", 17);
-INSERT INTO country(c_id, c_name, ipsc) VALUES (7, "Italy", 10);
-INSERT INTO country(c_id, c_name, ipsc) VALUES (8, "ANZAC", 10);
-INSERT INTO country(c_id, c_name, ipsc) VALUES (9, "France", 19);
+INSERT INTO country(c_id, c_name, ipcs) VALUES (0, "Germany", 30);
+INSERT INTO country(c_id, c_name, ipcs) VALUES (1, "Soviet Union", 37);
+INSERT INTO country(c_id, c_name, ipcs) VALUES (2, "Japan", 26);
+INSERT INTO country(c_id, c_name, ipcs) VALUES (3, "United States", 52);
+INSERT INTO country(c_id, c_name, ipcs) VALUES (4, "China", 12);
+INSERT INTO country(c_id, c_name, ipcs) VALUES (5, "United Kingdom Europe", 28);
+INSERT INTO country(c_id, c_name, ipcs) VALUES (6, "United Kingdom Pacific", 17);
+INSERT INTO country(c_id, c_name, ipcs) VALUES (7, "Italy", 10);
+INSERT INTO country(c_id, c_name, ipcs) VALUES (8, "ANZAC", 10);
+INSERT INTO country(c_id, c_name, ipcs) VALUES (9, "France", 19);
 
 INSERT INTO product(p_id, p_name, p_price, res_price) VALUES (0, "Infantry", 3, NULL);
 INSERT INTO product(p_id, p_name, p_price, res_price) VALUES (1, "Artillery", 4, NULL);

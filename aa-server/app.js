@@ -12,12 +12,33 @@ let connection = mysql.createConnection(credentials);
 connection.connect();
 
 function rowToObject(row) {
+
+        return {
+                c_id: row.c_id,
+                c_name: row.c_name,
+                ipcs: row.ipcs,
+        };
+        /*
 	return {
 		p_id: row.p_id,
 		p_name: row.p_name,
 		p_cost: row.p_cost,
-	};
+        };
+        */
 }
+
+app.get('/country/:c_id/:c_name/:ipcs', (request, response) => {
+        const params = [request.params.c_id];
+	const query = 'SELECT * FROM country WHERE c_id = ? ORDER BY c_id DESC';
+	connection.query(query, params, (error, row) => {
+		response.send({
+			ok: true,
+			country: row,
+		});
+	});
+});
+
+/*
 
 app.get('/product/:p_id/:p_name', (request, response) => {
 	const query = 'SELECT p_id, p_name, p_cost FROM product WHERE p_id = ? AND p_name = ? ORDER BY p_id DESC';
@@ -62,6 +83,7 @@ app.delete('/product', (request, response) => {
         });
 });
 
+*/
 
 const port = 8442;
 app.listen(port, () => {

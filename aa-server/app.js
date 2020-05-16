@@ -27,7 +27,7 @@ function rowToObject(row) {
         */
 }
 
-app.get('/country/:c_id/:c_name/:ipcs', (request, response) => {
+app.get('/country/:c_id', (request, response) => {
         const params = [request.params.c_id];
 	const query = 'SELECT * FROM country WHERE c_id = ? ORDER BY c_id DESC';
 	connection.query(query, params, (error, rows) => {

@@ -85,7 +85,7 @@ app.delete('/product', (request, response) => {
 
 */
 
-const port = 3000;
+const port = 3443;
 app.listen(port, () => {
 	console.log(`We're live on port ${port}!`);
 });

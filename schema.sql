@@ -61,15 +61,15 @@ CREATE TABLE countryresearch (
 	FOREIGN KEY(res_id) REFERENCES research(res_id)
 );
 INSERT INTO country(c_id, c_name, ipsc) VALUES (0, "Germany", 30);
-INSERT INTO country(c_id, c_name, ipsc) VALUES (1, "Soviet Union", 30);
-INSERT INTO country(c_id, c_name, ipsc) VALUES (2, "Japan", 30);
-INSERT INTO country(c_id, c_name, ipsc) VALUES (3, "United States", 30);
-INSERT INTO country(c_id, c_name, ipsc) VALUES (4, "China", 30);
-INSERT INTO country(c_id, c_name, ipsc) VALUES (5, "United Kingdom Europe", 30);
-INSERT INTO country(c_id, c_name, ipsc) VALUES (6, "United Kingdom Pacific", 30);
-INSERT INTO country(c_id, c_name, ipsc) VALUES (7, "Italy", 30);
-INSERT INTO country(c_id, c_name, ipsc) VALUES (8, "ANZAC", 30);
-INSERT INTO country(c_id, c_name, ipsc) VALUES (9, "France", 30);
+INSERT INTO country(c_id, c_name, ipsc) VALUES (1, "Soviet Union", 37);
+INSERT INTO country(c_id, c_name, ipsc) VALUES (2, "Japan", 26);
+INSERT INTO country(c_id, c_name, ipsc) VALUES (3, "United States", 52);
+INSERT INTO country(c_id, c_name, ipsc) VALUES (4, "China", 12);
+INSERT INTO country(c_id, c_name, ipsc) VALUES (5, "United Kingdom Europe", 28);
+INSERT INTO country(c_id, c_name, ipsc) VALUES (6, "United Kingdom Pacific", 17);
+INSERT INTO country(c_id, c_name, ipsc) VALUES (7, "Italy", 10);
+INSERT INTO country(c_id, c_name, ipsc) VALUES (8, "ANZAC", 10);
+INSERT INTO country(c_id, c_name, ipsc) VALUES (9, "France", 19);
 
 INSERT INTO product(p_id, p_name, p_price, res_price) VALUES (0, "Infantry", 3, NULL);
 INSERT INTO product(p_id, p_name, p_price, res_price) VALUES (1, "Artillery", 4, NULL);
@@ -79,12 +79,12 @@ INSERT INTO product(p_id, p_name, p_price, res_price) VALUES (4, "AAA", 5, NULL)
 INSERT INTO product(p_id, p_name, p_price, res_price) VALUES (5, "Fighter", 6, NULL);
 INSERT INTO product(p_id, p_name, p_price, res_price) VALUES (6, "Tactical Bomber", 11, NULL);
 INSERT INTO product(p_id, p_name, p_price, res_price) VALUES (7, "Strategic Bomber", 12, NULL);
-INSERT INTO product(p_id, p_name, p_price, res_price) VALUES (8, "Battleship", 20, NULL);
-INSERT INTO product(p_id, p_name, p_price, res_price) VALUES (9, "Aircraft Carrier", 16, NULL);
-INSERT INTO product(p_id, p_name, p_price, res_price) VALUES (10, "Cruiser", 12, NULL);
-INSERT INTO product(p_id, p_name, p_price, res_price) VALUES (11, "Destroyer", 8, NULL);
-INSERT INTO product(p_id, p_name, p_price, res_price) VALUES (12, "Submarine", 6, NULL);
-INSERT INTO product(p_id, p_name, p_price, res_price) VALUES (13, "Transport", 7, NULL);
+INSERT INTO product(p_id, p_name, p_price, res_price) VALUES (8, "Battleship", 20, 17);
+INSERT INTO product(p_id, p_name, p_price, res_price) VALUES (9, "Aircraft Carrier", 16, 13);
+INSERT INTO product(p_id, p_name, p_price, res_price) VALUES (10, "Cruiser", 12, 9);
+INSERT INTO product(p_id, p_name, p_price, res_price) VALUES (11, "Destroyer", 8, 7);
+INSERT INTO product(p_id, p_name, p_price, res_price) VALUES (12, "Submarine", 6, 5);
+INSERT INTO product(p_id, p_name, p_price, res_price) VALUES (13, "Transport", 7, 6);
 INSERT INTO product(p_id, p_name, p_price, res_price) VALUES (14, "Major Industrial Company", 30, NULL);
 INSERT INTO product(p_id, p_name, p_price, res_price) VALUES (15, "Minor Industrial Company", 12, NULL);
 INSERT INTO product(p_id, p_name, p_price, res_price) VALUES (16, "Upgrade Minor Industrial Company", 20, NULL);
@@ -105,14 +105,14 @@ INSERT INTO victorycity(v_id, v_name, isCapital, side, c_id) VALUES (7, "London"
 INSERT INTO victorycity(v_id, v_name, isCapital, side, c_id) VALUES (8, "Cairo", FALSE, "Europe", 5);
 INSERT INTO victorycity(v_id, v_name, isCapital, side, c_id) VALUES (9, "Ottawa", FALSE, "Europe", 5);
 INSERT INTO victorycity(v_id, v_name, isCapital, side, c_id) VALUES (10, "Washington", TRUE, "Europe", 3);
-INSERT INTO victorycity(v_id, v_name, isCapital, side, c_id) VALUES (11, "Tokyo", TRUE, "Europe", 2);
-INSERT INTO victorycity(v_id, v_name, isCapital, side, c_id) VALUES (12, "Shanghai", FALSE, "Europe", 2);
-INSERT INTO victorycity(v_id, v_name, isCapital, side, c_id) VALUES (13, "Calcutta", TRUE, "Europe", 6);
-INSERT INTO victorycity(v_id, v_name, isCapital, side, c_id) VALUES (14, "Hong Kong", FALSE, "Europe", 6);
-INSERT INTO victorycity(v_id, v_name, isCapital, side, c_id) VALUES (15, "Manila", FALSE, "Europe", 3);
-INSERT INTO victorycity(v_id, v_name, isCapital, side, c_id) VALUES (16, "San Francisco", FALSE, "Europe", 3);
-INSERT INTO victorycity(v_id, v_name, isCapital, side, c_id) VALUES (17, "Honolulu", FALSE, "Europe", 3);
-INSERT INTO victorycity(v_id, v_name, isCapital, side, c_id) VALUES (18, "Sydney", TRUE, "Europe", 8);
+INSERT INTO victorycity(v_id, v_name, isCapital, side, c_id) VALUES (11, "Tokyo", TRUE, "Pacific", 2);
+INSERT INTO victorycity(v_id, v_name, isCapital, side, c_id) VALUES (12, "Shanghai", FALSE, "Pacific", 2);
+INSERT INTO victorycity(v_id, v_name, isCapital, side, c_id) VALUES (13, "Calcutta", TRUE, "Pacific", 6);
+INSERT INTO victorycity(v_id, v_name, isCapital, side, c_id) VALUES (14, "Hong Kong", FALSE, "Pacific", 6);
+INSERT INTO victorycity(v_id, v_name, isCapital, side, c_id) VALUES (15, "Manila", FALSE, "Pacific", 3);
+INSERT INTO victorycity(v_id, v_name, isCapital, side, c_id) VALUES (16, "San Francisco", FALSE, "Pacific", 3);
+INSERT INTO victorycity(v_id, v_name, isCapital, side, c_id) VALUES (17, "Honolulu", FALSE, "Pacific", 3);
+INSERT INTO victorycity(v_id, v_name, isCapital, side, c_id) VALUES (18, "Sydney", TRUE, "Pacific", 8);
 
 INSERT INTO research(res_id, res_name) VALUES (0, "Advanced Artillery");
 INSERT INTO research(res_id, res_name) VALUES (1, "Rockets");

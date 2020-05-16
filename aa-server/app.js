@@ -28,12 +28,12 @@ function rowToObject(row) {
 }
 
 app.get('/country/:c_id/:c_name/:ipcs', (request, response) => {
-        const query = 'SELECT * FROM country WHERE c_id = ? ORDER BY c_id DESC';
         const params = [request.params.c_id];
-	connection.query(query, params, (error, row) => {
+	const query = 'SELECT * FROM country WHERE c_id = ? ORDER BY c_id DESC';
+	connection.query(query, params, (error, rows) => {
 		response.send({
 			ok: true,
-			country: row,
+			country: rows.map(rowToObject),
 		});
 	});
 });
@@ -85,7 +85,7 @@ app.delete('/product', (request, response) => {
 
 */
 
-const port = 8300;
+const port = 3000;
 app.listen(port, () => {
 	console.log(`We're live on port ${port}!`);
 });

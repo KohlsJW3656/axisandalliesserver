@@ -60,6 +60,16 @@ CREATE TABLE countryresearch (
 	FOREIGN KEY(c_id) REFERENCES country(c_id),
 	FOREIGN KEY(res_id) REFERENCES research(res_id)
 );
+INSERT INTO country(c_id, c_name, ipsc) VALUES (0, "Germany", 30);
+INSERT INTO country(c_id, c_name, ipsc) VALUES (1, "Soviet Union", 30);
+INSERT INTO country(c_id, c_name, ipsc) VALUES (2, "Japan", 30);
+INSERT INTO country(c_id, c_name, ipsc) VALUES (3, "United States", 30);
+INSERT INTO country(c_id, c_name, ipsc) VALUES (4, "China", 30);
+INSERT INTO country(c_id, c_name, ipsc) VALUES (5, "United Kingdom Europe", 30);
+INSERT INTO country(c_id, c_name, ipsc) VALUES (6, "United Kingdom Pacific", 30);
+INSERT INTO country(c_id, c_name, ipsc) VALUES (7, "Italy", 30);
+INSERT INTO country(c_id, c_name, ipsc) VALUES (8, "ANZAC", 30);
+INSERT INTO country(c_id, c_name, ipsc) VALUES (9, "France", 30);
 
 INSERT INTO product(p_id, p_name, p_price, res_price) VALUES (0, "Infantry", 3, NULL);
 INSERT INTO product(p_id, p_name, p_price, res_price) VALUES (1, "Artillery", 4, NULL);
@@ -117,14 +127,5 @@ INSERT INTO research(res_id, res_name) VALUES (9, "Improved Shipyards");INSERT I
 INSERT INTO research(res_id, res_name) VALUES (10, "Long Range Aircraft");
 INSERT INTO research(res_id, res_name) VALUES (11, "Heavy Bombers");
 
-INSERT INTO country(c_id, c_name, ipsc) VALUES (0, "Germany", 30);
-INSERT INTO country(c_id, c_name, ipsc) VALUES (1, "Soviet Union", 30);
-INSERT INTO country(c_id, c_name, ipsc) VALUES (2, "Japan", 30);
-INSERT INTO country(c_id, c_name, ipsc) VALUES (3, "United States", 30);
-INSERT INTO country(c_id, c_name, ipsc) VALUES (4, "China", 30);
-INSERT INTO country(c_id, c_name, ipsc) VALUES (5, "United Kingdom Europe", 30);
-INSERT INTO country(c_id, c_name, ipsc) VALUES (6, "United Kingdom Pacific", 30);
-INSERT INTO country(c_id, c_name, ipsc) VALUES (7, "Italy", 30);
-INSERT INTO country(c_id, c_name, ipsc) VALUES (8, "ANZAC", 30);
-INSERT INTO country(c_id, c_name, ipsc) VALUES (9, "France", 30);
+
 

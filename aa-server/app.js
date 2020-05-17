@@ -37,15 +37,15 @@ app.get('/country/:c_id', (request, response) => {
 		});
 	});
 });
-app.post('/country/:ipcs', (request, response) => {
-        const params = [request.body.ipcs];
-	const query = 'INSERT INTO country(ipcs) VALUES (?)';
-	connection.query(query, params, (error, result) => {
-		response.send({
-			ok: true,
-			id: result.insertID,
-		});
-	});
+
+app.patch('/country', (request, response) => {
+        const query = 'UPDATE country SET ipcs = ? WHERE c_id = ?';
+        const params = [request.body.c_id, request.body.ipcs, request.params.c_id];
+        connection.query(query, params, (error, result) => {
+                response.send({
+                        ok: true,
+                });
+        });
 });
 
 /*
@@ -72,15 +72,7 @@ app.post('/product', (request, response) => {
         });
 });
 
-app.patch('/product', (request, response) => {
-        const query = 'UPDATE product SET p_id = ?, p_name = ?, p_cost = ?, updated_at = CURRENT_TIMESTAMP WHERE id = ?';
-        const params = [request.body.p_id, request.body.p_name, request.body.p_cost, request.params.id];
-        connection.query(query, params, (error, result) => {
-                response.send({
-                        ok: true,
-                });
-        });
-});
+
 
 
 app.delete('/product', (request, response) => {

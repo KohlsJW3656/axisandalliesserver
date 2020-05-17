@@ -17,14 +17,12 @@ function rowToObject(row) {
                 c_id: row.c_id,
                 c_name: row.c_name,
                 ipcs: row.ipcs,
-        };
-        /*
-	return {
-		p_id: row.p_id,
+                
+                p_id: row.p_id,
 		p_name: row.p_name,
 		p_cost: row.p_cost,
         };
-        */
+        
 }
 
 app.get('/country/:c_id', (request, response) => {
@@ -48,11 +46,9 @@ app.patch('/country/:c_id', (request, response) => {
         });
 });
 
-/*
-
-app.get('/product/:p_id/:p_name', (request, response) => {
-	const query = 'SELECT p_id, p_name, p_cost FROM product WHERE p_id = ? AND p_name = ? ORDER BY p_id DESC';
-	const params = [request.params.p_id, request.params.p_name];
+app.get('/product/:p_id', (request, response) => {
+	const query = 'SELECT p_id, p_name, p_price, res_price FROM product WHERE p_id = ? ORDER BY p_id DESC';
+	const params = [request.params.p_id];
 	connection.query(query, params, (error, rows) => {
 		response.send({
 			ok: true,
@@ -60,6 +56,10 @@ app.get('/product/:p_id/:p_name', (request, response) => {
 		});
 	});
 });
+
+/*
+
+
 
 app.post('/product', (request, response) => {
         const query = 'INSERT INTO product(p_id, p_name, p_cost) VALUES (?,?,?)';
@@ -116,11 +116,7 @@ curl --request PATCH \
         --data '{"c_name": "germany", "ipcs": 11}' \
         https://axisandallies-server.duckdns.org:8442/country/2
 
-        curl --request PATCH \
-        --header "Content-Type: application/json" \
-        --data '{"c_name": "germany", "ipcs": 11}' \
-        https://axisandallies-server.duckdns.org:8442/country/5
-
+        curl --request PATC
 
         */
        

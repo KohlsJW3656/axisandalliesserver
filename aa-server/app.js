@@ -23,12 +23,18 @@ function rowToObject(row) {
                 p_cost: row.p_cost,
                 res_cost: row.res_cost,
 
+                
+        };
+        
+}
+function rowToObject1(row){
+        return{
                 p_id: row.p_id,
                 amount: row.amount,
                 c_id: row.c_id,
                 season_year: row.season_year,
                 turn: row.turn,
-        };
+        }
         
 }
 
@@ -75,13 +81,12 @@ app.get('/purchase/:c_id/:turn', (request, response) => {
 	});
 });
 
-app.get('/purchase/:c_id', (request, response) => {
-        const query = 'SELECT * FROM purchase WHERE c_id = ? ORDERED BY c_id AND p_id AND turn DESC';
-        const params = [request.params.c_id];
+app.get('/purchase', (request, response) => {
+        const query = 'SELECT * FROM purchase';
 	connection.query(query, params, (error, rows) => {
 		response.send({
 			ok: true,
-			product: rows.map(rowToObject),
+			product: rows.map(rowToObject1),
 		});
 	});
 });

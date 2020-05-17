@@ -37,6 +37,16 @@ app.get('/country/:c_id', (request, response) => {
 		});
 	});
 });
+app.post('/country/:ipcs', (request, response) => {
+        const params = [request.body.ipcs];
+	const query = 'INSERT INTO country(ipcs) VALUES (?)';
+	connection.query(query, params, (error, result) => {
+		response.send({
+			ok: true,
+			id: result.insertID,
+		});
+	});
+});
 
 /*
 

@@ -14,9 +14,9 @@ connection.connect();
 function rowToObject(row) {
 
         return {
-                //c_id: row.c_id,
-                //c_name: row.c_name,
-               // ipcs: row.ipcs,
+                c_id: row.c_id,
+                c_name: row.c_name,
+                ipcs: row.ipcs,
                 
                 p_id: row.p_id,
 		p_name: row.p_name,

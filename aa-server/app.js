@@ -83,7 +83,7 @@ app.get('/purchase/:c_id/:turn', (request, response) => {
 
 app.get('/purchase', (request, response) => {
         const query = 'SELECT * FROM purchase';
-	connection.query(query, params, (error, rows) => {
+	connection.query(query, (error, rows) => {
 		response.send({
 			ok: true,
 			product: rows.map(rowToObject1),

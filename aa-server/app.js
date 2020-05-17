@@ -20,7 +20,8 @@ function rowToObject(row) {
                 
                 p_id: row.p_id,
 		p_name: row.p_name,
-		p_cost: row.p_cost,
+                p_cost: row.p_cost,
+                res_cost: row.res_cost,
         };
         
 }
@@ -47,7 +48,7 @@ app.patch('/country/:c_id', (request, response) => {
 });
 
 app.get('/product/:p_id', (request, response) => {
-	const query = 'SELECT p_id, p_name, p_price, res_price FROM product WHERE p_id = ? ORDER BY p_id DESC';
+	const query = 'SELECT * FROM product WHERE p_id = ?';
 	const params = [request.params.p_id];
 	connection.query(query, params, (error, rows) => {
 		response.send({

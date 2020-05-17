@@ -75,9 +75,10 @@ app.get('/purchase/:c_id/:turn', (request, response) => {
 	});
 });
 
-app.get('/purchase', (request, response) => {
-	const query = 'SELECT * FROM purchase ORDERED BY c_id AND p_id AND turn DESC';
-	connection.query(query, (error, rows) => {
+app.get('/purchase/:c_id', (request, response) => {
+        const query = 'SELECT * FROM purchase WHERE c_id = ? ORDERED BY c_id AND p_id AND turn DESC';
+        const params = [request.params.c_id];
+	connection.query(query, params, (error, rows) => {
 		response.send({
 			ok: true,
 			product: rows.map(rowToObject),

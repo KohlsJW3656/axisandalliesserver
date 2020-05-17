@@ -77,8 +77,7 @@ app.get('/purchase/:c_id/:turn', (request, response) => {
 
 app.get('/purchase', (request, response) => {
 	const query = 'SELECT * FROM purchase ORDERED BY c_id AND p_id AND turn DESC';
-	const params = [];
-	connection.query(query, params, (error, rows) => {
+	connection.query(query, (error, rows) => {
 		response.send({
 			ok: true,
 			product: rows.map(rowToObject),
@@ -99,8 +98,6 @@ app.post('/purchase', (request, response) => {
 });
 
 /*
-
-
 
 app.post('/product', (request, response) => {
         const query = 'INSERT INTO product(p_id, p_name, p_cost) VALUES (?,?,?)';
@@ -156,6 +153,12 @@ curl --request PATCH \
         --header "Content-Type: application/json" \
         --data '{"c_name": "germany", "ipcs": 11}' \
         https://axisandallies-server.duckdns.org:8442/country/2
+
+        curl --request POST \
+        --header "Content-Type: application/json" \
+        --data '{"p_id": 0,"amount": 7, "c_id": 0, "season_year": "Spring, Summer 1940", "turn": 1}' \
+        https://axisandallies-server.duckdns.org:8442/purchase
+
 
         */
        

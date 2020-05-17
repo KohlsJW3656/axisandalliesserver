@@ -103,6 +103,15 @@ app.post('/purchase', (request, response) => {
         });
 });
 
+app.delete('/purchase', (request, response) => {
+        const query = 'DELETE * FROM purchase';
+        connection.query(query, (error, result) => {
+                response.send({
+                        ok: true,
+                });
+        });
+});
+
 /*
 
 app.post('/product', (request, response) => {

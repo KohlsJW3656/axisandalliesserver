@@ -95,7 +95,14 @@ app.delete('/product', (request, response) => {
 
 */
 
-const port = 3443;
+const port = 3000;
 app.listen(port, () => {
 	console.log(`We're live on port ${port}!`);
 });
+
+/*
+curl --request POST \
+        --header "Content-Type: application/json" \
+        --data '{"ipcs": 11}' \
+        https://axisandallies-server.duckdns.org:8442/country/
+        */

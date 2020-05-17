@@ -59,16 +59,6 @@ app.patch('/country/:c_id', (request, response) => {
         });
 });
 
-app.get('/product/:p_id', (request, response) => {
-	const query = 'SELECT * FROM product WHERE p_id = ?';
-	const params = [request.params.p_id];
-	connection.query(query, params, (error, rows) => {
-		response.send({
-			ok: true,
-			product: rows.map(rowToObject),
-		});
-	});
-});
 
 app.get('/purchase/:c_id/:turn', (request, response) => {
 	const query = 'SELECT * FROM purchase WHERE c_id = ? AND turn = ?';
@@ -92,8 +82,8 @@ app.get('/purchase', (request, response) => {
 });
 
 app.post('/purchase', (request, response) => {
-        const query = 'INSERT INTO purchase(p_id, amount, c_id, season_year, turn) VALUES (?,?,?,?,?)';
-        const params = [request.body.p_id, request.body.amount, request.body.c_id, request.body.season_year, request.body.turn];
+        const query = 'INSERT INTO purchase(p_name, amount, c_id, season_year, turn) VALUES (?,?,?,?,?)';
+        const params = [request.body.p_name, request.body.amount, request.body.c_id, request.body.season_year, request.body.turn];
         connection.query(query, params, (error, result) => {
                 response.send({
                         ok: true,
@@ -112,33 +102,6 @@ app.delete('/purchase', (request, response) => {
         });
 });
 
-/*
-
-app.post('/product', (request, response) => {
-        const query = 'INSERT INTO product(p_id, p_name, p_cost) VALUES (?,?,?)';
-        const params = [request.body.p_id, request.body.p_name, request.body.p_cost];
-        connection.query(query, params, (error, result) => {
-                response.send({
-                        ok: true,
-                        id: result.insertId,
-                });
-        });
-});
-
-
-
-
-app.delete('/product', (request, response) => {
-        const query = 'UPDATE product SET is_deleted = 1, updated_at = CURRENT_TIMESTAMP WHERE id = ?';
-        const params = [request.params.id];
-        connection.query(query, params, (error, result) => {
-                response.send({
-                        ok: true,
-                });
-        });
-});
-
-*/
 
 const port = 3443;
 app.listen(port, () => {

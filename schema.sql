@@ -4,15 +4,7 @@ DROP TABLE IF EXISTS victorycity;
 DROP TABLE IF EXISTS revenue;
 DROP TABLE IF EXISTS purchase;
 DROP TABLE IF EXISTS country;
-DROP TABLE IF EXISTS product;
 
-CREATE TABLE product (
-	p_id INT,
-	p_name VARCHAR(40),
-	p_price INT,
-        res_price INT,
-	PRIMARY KEY(p_id)
-);
 CREATE TABLE country (
         c_id INT NOT NULL,
         c_name VARCHAR(30) NOT NULL,
@@ -20,7 +12,7 @@ CREATE TABLE country (
 	PRIMARY KEY(c_id)
 );
 CREATE TABLE purchase (
-        p_id INT NOT NULL,
+        p_name VARCHAR(40),
         amount INT NOT NULL,
         c_id INT NOT NULL,
         season_year VARCHAR(20) NOT NULL,
@@ -71,28 +63,6 @@ INSERT INTO country(c_id, c_name, ipcs) VALUES (7, "Italy", 10);
 INSERT INTO country(c_id, c_name, ipcs) VALUES (8, "ANZAC", 10);
 INSERT INTO country(c_id, c_name, ipcs) VALUES (9, "France", 19);
 
-INSERT INTO product(p_id, p_name, p_price, res_price) VALUES (0, "Infantry", 3, NULL);
-INSERT INTO product(p_id, p_name, p_price, res_price) VALUES (1, "Artillery", 4, NULL);
-INSERT INTO product(p_id, p_name, p_price, res_price) VALUES (2, "Mechanized Infantry", 4, NULL);
-INSERT INTO product(p_id, p_name, p_price, res_price) VALUES (3, "Tank", 6, NULL);
-INSERT INTO product(p_id, p_name, p_price, res_price) VALUES (4, "AAA", 5, NULL);
-INSERT INTO product(p_id, p_name, p_price, res_price) VALUES (5, "Fighter", 6, NULL);
-INSERT INTO product(p_id, p_name, p_price, res_price) VALUES (6, "Tactical Bomber", 11, NULL);
-INSERT INTO product(p_id, p_name, p_price, res_price) VALUES (7, "Strategic Bomber", 12, NULL);
-INSERT INTO product(p_id, p_name, p_price, res_price) VALUES (8, "Battleship", 20, 17);
-INSERT INTO product(p_id, p_name, p_price, res_price) VALUES (9, "Aircraft Carrier", 16, 13);
-INSERT INTO product(p_id, p_name, p_price, res_price) VALUES (10, "Cruiser", 12, 9);
-INSERT INTO product(p_id, p_name, p_price, res_price) VALUES (11, "Destroyer", 8, 7);
-INSERT INTO product(p_id, p_name, p_price, res_price) VALUES (12, "Submarine", 6, 5);
-INSERT INTO product(p_id, p_name, p_price, res_price) VALUES (13, "Transport", 7, 6);
-INSERT INTO product(p_id, p_name, p_price, res_price) VALUES (14, "Major Industrial Company", 30, NULL);
-INSERT INTO product(p_id, p_name, p_price, res_price) VALUES (15, "Minor Industrial Company", 12, NULL);
-INSERT INTO product(p_id, p_name, p_price, res_price) VALUES (16, "Upgrade Minor Industrial Company", 20, NULL);
-INSERT INTO product(p_id, p_name, p_price, res_price) VALUES (17, "Air Base", 15, NULL);
-INSERT INTO product(p_id, p_name, p_price, res_price) VALUES (18, "Naval Base", 15, NULL);
-INSERT INTO product(p_id, p_name, p_price, res_price) VALUES (19, "Research", 5, NULL);
-INSERT INTO product(p_id, p_name, p_price, res_price) VALUES (20, "Repair", 1, NULL);
-INSERT INTO product(p_id, p_name, p_price, res_price) VALUES (21, "Airlift", 5, NULL);
 
 INSERT INTO victorycity(v_id, v_name, isCapital, side, c_id) VALUES (0, "Berlin", TRUE, "Europe", 0);
 INSERT INTO victorycity(v_id, v_name, isCapital, side, c_id) VALUES (1, "Warsaw", FALSE, "Europe", 0);

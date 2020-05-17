@@ -117,9 +117,9 @@ curl --request PATCH \
         https://axisandallies-server.duckdns.org:8442/country/2
 
         curl --request PATCH \
- --header "Content-Type: application/json" \
- --data '{"ipcs": 11}' \
- https://axisandallies-server.duckdns.org:8442/country/5
+        --header "Content-Type: application/json" \
+        --data '{"c_name": "germany", "ipcs": 11}' \
+        https://axisandallies-server.duckdns.org:8442/country/5
 
 
         */

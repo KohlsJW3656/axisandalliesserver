@@ -17,19 +17,13 @@ function rowToObject(row) {
                 c_id: row.c_id,
                 c_name: row.c_name,
                 ipcs: row.ipcs,
-                
-                p_id: row.p_id,
-		p_name: row.p_name,
-                p_cost: row.p_cost,
-                res_cost: row.res_cost,
-
-                
+            
         };
         
 }
 function rowToObject1(row){
         return{
-                p_id: row.p_id,
+                p_name: row.p_name,
                 amount: row.amount,
                 c_id: row.c_id,
                 season_year: row.season_year,

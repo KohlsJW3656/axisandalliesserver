@@ -38,9 +38,9 @@ app.get('/country/:c_id', (request, response) => {
 	});
 });
 
-app.patch('/country', (request, response) => {
+app.patch('/country/:c_id', (request, response) => {
         const query = 'UPDATE country SET ipcs = ? WHERE c_id = ?';
-        const params = [request.body.c_id, request.body.ipcs, request.params.c_id];
+        const params = [request.body.ipcs, request.params.c_id];
         connection.query(query, params, (error, result) => {
                 response.send({
                         ok: true,
@@ -97,4 +97,25 @@ curl --request POST \
         --header "Content-Type: application/json" \
         --data '{"ipcs": 11}' \
         https://axisandallies-server.duckdns.org:8442/country/
+        .
+
+        curl --request PATCH \
+        --header "Content-Type: application/json" \
+        --data '{"ipcs": 11}' \
+        https://axisandallies-server.duckdns.org:8442/country/5
+
+        curl --request PATCH \
+        --header "Content-Type: application/json" \
+        --data '{"ipcs": 11}' \
+        -X PATCH https://axisandallies-server.duckdns.org:8442/country
+
+        curl -X PATCH https://axisandallis-server.duckdns.org:8442/country --header "Content-Type: application/json"
+
+curl --request PATCH \
+        --header "Content-Type: application/json" \
+        --data '{"c_name": "germany", "ipcs": 11}' \
+        https://axisandallies-server.duckdns.org:8442/country/2
+
         */
+       
+

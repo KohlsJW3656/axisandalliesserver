@@ -22,6 +22,12 @@ function rowToObject(row) {
 		p_name: row.p_name,
                 p_cost: row.p_cost,
                 res_cost: row.res_cost,
+
+                p_id: row.p_id,
+                amount: row.amount,
+                c_id: row.c_id,
+                season_year: row.season_year,
+                turn: row.turn,
         };
         
 }
@@ -56,6 +62,40 @@ app.get('/product/:p_id', (request, response) => {
 			product: rows.map(rowToObject),
 		});
 	});
+});
+
+app.get('/purchase/:c_id/:turn', (request, response) => {
+	const query = 'SELECT * FROM purchase WHERE c_id = ? AND turn = ?';
+	const params = [request.params.c_id, request.params.turn];
+	connection.query(query, params, (error, rows) => {
+		response.send({
+			ok: true,
+			product: rows.map(rowToObject),
+		});
+	});
+});
+
+app.get('/purchase', (request, response) => {
+	const query = 'SELECT * FROM purchase ORDERED BY c_id AND p_id AND turn DESC';
+	const params = [];
+	connection.query(query, params, (error, rows) => {
+		response.send({
+			ok: true,
+			product: rows.map(rowToObject),
+		});
+	});
+});
+
+app.post('/purchase', (request, response) => {
+        const query = 'INSERT INTO purchase(p_id, amount, c_id, season_year, turn) VALUES (?,?,?,?,?)';
+        const params = [request.body.p_id, request.body.amount, request.body.c_id, request.body.season_year, request.body.turn];
+        connection.query(query, params, (error, result) => {
+                response.send({
+                        ok: true,
+                        p_id: result.insertId,
+                        c_id: result.insertId,
+                });
+        });
 });
 
 /*
@@ -116,8 +156,6 @@ curl --request PATCH \
         --header "Content-Type: application/json" \
         --data '{"c_name": "germany", "ipcs": 11}' \
         https://axisandallies-server.duckdns.org:8442/country/2
-
-        curl --request PATC
 
         */
        

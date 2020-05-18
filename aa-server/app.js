@@ -101,37 +101,3 @@ const port = 3443;
 app.listen(port, () => {
 	console.log(`We're live on port ${port}!`);
 });
-
-/*
-curl --request POST \
-        --header "Content-Type: application/json" \
-        --data '{"ipcs": 11}' \
-        https://axisandallies-server.duckdns.org:8442/country/
-        .
-
-        curl --request PATCH \
-        --header "Content-Type: application/json" \
-        --data '{"ipcs": 11}' \
-        https://axisandallies-server.duckdns.org:8442/country/5
-
-        curl --request PATCH \
-        --header "Content-Type: application/json" \
-        --data '{"ipcs": 11}' \
-        -X PATCH https://axisandallies-server.duckdns.org:8442/country
-
-        curl -X PATCH https://axisandallis-server.duckdns.org:8442/country --header "Content-Type: application/json"
-
-curl --request PATCH \
-        --header "Content-Type: application/json" \
-        --data '{"c_name": "germany", "ipcs": 11}' \
-        https://axisandallies-server.duckdns.org:8442/country/2
-
-        curl --request POST \
-        --header "Content-Type: application/json" \
-        --data '{"p_id": 0,"amount": 7, "c_id": 0, "season_year": "Spring, Summer 1940", "turn": 1}' \
-        https://axisandallies-server.duckdns.org:8442/purchase
-
-
-        */
-       
-

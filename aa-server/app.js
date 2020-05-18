@@ -60,7 +60,7 @@ app.get('/purchase/:c_id/:turn', (request, response) => {
 	connection.query(query, params, (error, rows) => {
 		response.send({
 			ok: true,
-			product: rows.map(rowToObject),
+			purchase: rows.map(rowToObject),
 		});
 	});
 });
@@ -70,7 +70,7 @@ app.get('/purchase', (request, response) => {
 	connection.query(query, (error, rows) => {
 		response.send({
 			ok: true,
-			product: rows.map(rowToObject1),
+			purchase: rows.map(rowToObject1),
 		});
 	});
 });

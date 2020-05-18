@@ -17,7 +17,7 @@ CREATE TABLE purchase (
         c_id INT NOT NULL,
         season_year VARCHAR(20) NOT NULL,
         turn INT NOT NULL,
-        PRIMARY KEY(turn),
+        PRIMARY KEY(c_id, turn),
 	FOREIGN KEY(c_id) REFERENCES country(c_id)
 
 );
@@ -35,7 +35,7 @@ CREATE TABLE victorycity (
         isCapital BOOLEAN,
         side VARCHAR(10),
         c_id INT NOT NULL,
-	PRIMARY KEY(v_id),
+	PRIMARY KEY(v_id, c_id),
 	FOREIGN KEY(c_id) REFERENCES country(c_id)
 );
 CREATE TABLE research(
@@ -49,6 +49,7 @@ CREATE TABLE countryresearch (
 	res_id INT NOT NULL,
         season_year VARCHAR(20) NOT NULL,
         turn INT NOT NULL,
+        PRIMARY KEY(c_id, res_id),
 	FOREIGN KEY(c_id) REFERENCES country(c_id),
 	FOREIGN KEY(res_id) REFERENCES research(res_id)
 );

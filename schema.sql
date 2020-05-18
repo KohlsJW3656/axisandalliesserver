@@ -17,7 +17,7 @@ CREATE TABLE purchase (
         c_id INT NOT NULL,
         season_year VARCHAR(20) NOT NULL,
         turn INT NOT NULL,
-        PRIMARY KEY(c_id, turn),
+        PRIMARY KEY(p_name, c_id, turn),
 	FOREIGN KEY(c_id) REFERENCES country(c_id)
 
 );

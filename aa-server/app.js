@@ -66,7 +66,7 @@ app.get('/purchase/:c_id/:turn', (request, response) => {
 });
 
 app.get('/purchase', (request, response) => {
-        const query = 'SELECT * FROM purchase ORDER BY c_id AND turn';
+        const query = 'SELECT * FROM purchase ORDER BY c_id DESC, turn DESC';
 	connection.query(query, (error, rows) => {
 		response.send({
 			ok: true,

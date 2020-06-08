@@ -120,7 +120,7 @@ app.post('/income', (request, response) => {
 })
 
 //Grab income
-app.get('/income', (response) => {
+app.get('/income', (request, response) => {
         const query = 'SELECT * FROM income ORDER BY turn ASC, c_id ASC';
 	connection.query(query, (error, rows) => {
 		response.send({

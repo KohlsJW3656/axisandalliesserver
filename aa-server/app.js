@@ -64,7 +64,7 @@ app.patch('/country/:c_id', (request, response) => {
 });
 
 //Grab all purchases
-app.get('/purchase', (response) => {
+app.get('/purchase', (request, response) => {
         const query = 'SELECT * FROM purchase ORDER BY turn ASC, c_id ASC, p_name ASC';
 	connection.query(query, (error, rows) => {
 		response.send({

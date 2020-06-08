@@ -24,6 +24,7 @@ function rowToPurchase(row){
                 p_name: row.p_name,
                 amount: row.amount,
                 c_id: row.c_id,
+                total_cost: row.total_cost,
                 season_year: row.season_year,
                 turn: row.turn,
         };
@@ -33,7 +34,6 @@ function rowToIncome(row) {
         return {
                 c_id: row.c_id,
                 revenue: row.revenue,
-                spent: row.spent,
                 lost: row.lost,
                 season_year: row.season_year,
                 turn: row.turn,

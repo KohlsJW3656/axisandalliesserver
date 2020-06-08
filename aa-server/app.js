@@ -59,7 +59,6 @@ app.patch('/country/:c_id', (request, response) => {
         connection.query(query, params, (error, result) => {
                 response.send({
                         ok: true,
-                        country: rows.map(rowToCountry),
                 });
         });
 });

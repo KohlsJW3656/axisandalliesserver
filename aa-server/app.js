@@ -87,8 +87,8 @@ app.patch('/purchase/:c_id/', (request, response) => {
 
 //Insert into purchase
 app.post('/purchase', (request, response) => {
-        const query = 'INSERT INTO purchase(p_name, amount, c_id, total_cost, season_year, turn) VALUES (?,?,?,?,?)';
-        const params = [request.body.p_name, request.body.amount, request.body.c_id, request.body.total_cost, request.body.season_year, request.body.turn];
+        const query = 'INSERT INTO purchase(p_name, amount, c_id, cost, season_year, turn) VALUES (?,?,?,?,?,?)';
+        const params = [request.body.p_name, request.body.amount, request.body.c_id, request.body.cost, request.body.season_year, request.body.turn];
         connection.query(query, params, (error, result) => {
                 response.send({
                         ok: true,
@@ -109,8 +109,8 @@ app.delete('/purchase', (request, response) => {
 
 //Insert income
 app.post('/income', (request, response) => {
-        const query ='INSERT INTO income(c_id, revenue, lost, season_year, turn) VALUES (?,?,?,?,?,?)';
-        const params = [response.body.c_id, response.body.revenue, response.body.lost, response.body.season_year, response.body.turn];
+        const query ='INSERT INTO income(c_id, revenue, lost, season_year, turn) VALUES (?,?,?,?,?)';
+        const params = [request.body.c_id, request.body.revenue, request.body.lost, request.body.season_year, request.body.turn];
         connection.query(query, params, (error, result) => {
                 response.send({
                         ok: true,

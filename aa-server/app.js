@@ -55,7 +55,7 @@ app.get('/country/:c_id', (request, response) => {
 //Change ipc amount
 app.patch('/country/:c_id', (request, response) => {
         const query = 'UPDATE country SET ipcs = ? WHERE c_id = ?';
-        const params = [request.params.c_id, request.body.ipcs];
+        const params = [request.params.c_id, request.body.c_name, request.body.ipcs];
         connection.query(query, params, (error, result) => {
                 response.send({
                         ok: true,

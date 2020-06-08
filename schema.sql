@@ -15,6 +15,7 @@ CREATE TABLE purchase (
         p_name VARCHAR(40),
         amount INT NOT NULL,
         c_id INT NOT NULL,
+        total_cost INT NOT NULL,
         season_year VARCHAR(20) NOT NULL,
         turn INT NOT NULL,
         PRIMARY KEY(p_name, c_id, turn),

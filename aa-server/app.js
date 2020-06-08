@@ -53,7 +53,7 @@ app.get('/country/:c_id', (request, response) => {
 });
 
 //Change ipc amount
-app.put('/country/:c_id', (request, response) => {
+app.patch('/country/:c_id', (request, response) => {
         const query = 'UPDATE country SET ipcs = ? WHERE c_id = ?';
         const params = [request.body.ipcs, request.params.c_id];
         connection.query(query, params, (error, result) => {
@@ -74,19 +74,8 @@ app.get('/purchase', (request, response) => {
 	});
 });
 
-//Change amount if name is already in there
-app.patch('/purchase/:c_id/', (request, response) => {
-        const query = 'UPDATE purchase SET amount = ? WHERE p_name = ? c_id = ? AND turn = ?';
-        const params = [request.body.p_name, request.params.amount, request.params.c_id, request.params.turn];
-        connection.query(query, params, (error, result) => {
-                response.send({
-                        ok: true,
-                });
-        });
-});
-
 //Insert into purchase
-app.post('/purchase', (request, response) => {
+app.put('/purchase', (request, response) => {
         const query = 'INSERT INTO purchase(p_name, amount, c_id, cost, season_year, turn) VALUES (?,?,?,?,?,?)';
         const params = [request.body.p_name, request.body.amount, request.body.c_id, request.body.cost, request.body.season_year, request.body.turn];
         connection.query(query, params, (error, result) => {

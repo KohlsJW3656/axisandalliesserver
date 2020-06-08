@@ -1,7 +1,7 @@
 DROP TABLE IF EXISTS countryresearch;
 DROP TABLE IF EXISTS research;
 DROP TABLE IF EXISTS victorycity;
-DROP TABLE IF EXISTS revenue;
+DROP TABLE IF EXISTS income;
 DROP TABLE IF EXISTS purchase;
 DROP TABLE IF EXISTS country;
 
@@ -19,14 +19,15 @@ CREATE TABLE purchase (
         turn INT NOT NULL,
         PRIMARY KEY(p_name, c_id, turn),
 	FOREIGN KEY(c_id) REFERENCES country(c_id)
-
 );
-CREATE TABLE revenue (
-        rev_id INT NOT NULL,
-        income INT NOT NULL,
-        expense INT NOT NULL,
+CREATE TABLE income (
         c_id INT NOT NULL,
-	PRIMARY KEY(rev_id),
+        revenue INT NOT NULL,
+        spent INT NOT NULL,
+        lost INT NOT NULL,
+        season_year VARCHAR(20) NOT NULL,
+        turn INT NOT NULL,
+	PRIMARY KEY(c_id, turn),
 	FOREIGN KEY(c_id) REFERENCES country(c_id)
 );
 CREATE TABLE victorycity (
@@ -39,9 +40,9 @@ CREATE TABLE victorycity (
 	FOREIGN KEY(c_id) REFERENCES country(c_id)
 );
 CREATE TABLE research(
-        res_id INT NOT NULL,
-        res_name VARCHAR(30),
-        PRIMARY KEY(res_id)
+        r_id INT NOT NULL,
+        r_name VARCHAR(30),
+        PRIMARY KEY(r_id)
 );
 
 CREATE TABLE countryresearch (
@@ -63,7 +64,6 @@ INSERT INTO country(c_id, c_name, ipcs) VALUES (6, "United Kingdom Pacific", 17)
 INSERT INTO country(c_id, c_name, ipcs) VALUES (7, "Italy", 10);
 INSERT INTO country(c_id, c_name, ipcs) VALUES (8, "ANZAC", 10);
 INSERT INTO country(c_id, c_name, ipcs) VALUES (9, "France", 19);
-
 
 INSERT INTO victorycity(v_id, v_name, isCapital, side, c_id) VALUES (0, "Berlin", TRUE, "Europe", 0);
 INSERT INTO victorycity(v_id, v_name, isCapital, side, c_id) VALUES (1, "Warsaw", FALSE, "Europe", 0);

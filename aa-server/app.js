@@ -24,7 +24,7 @@ function rowToPurchase(row){
                 p_name: row.p_name,
                 amount: row.amount,
                 c_id: row.c_id,
-                total_cost: row.total_cost,
+                cost: row.cost,
                 season_year: row.season_year,
                 turn: row.turn,
         };

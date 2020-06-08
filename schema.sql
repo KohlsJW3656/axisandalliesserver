@@ -24,7 +24,6 @@ CREATE TABLE purchase (
 CREATE TABLE income (
         c_id INT NOT NULL,
         revenue INT NOT NULL,
-        spent INT NOT NULL,
         lost INT NOT NULL,
         season_year VARCHAR(20) NOT NULL,
         turn INT NOT NULL,

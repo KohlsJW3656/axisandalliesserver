@@ -47,7 +47,7 @@ CREATE TABLE research(
 
 CREATE TABLE countryresearch (
         c_id INT NOT NULL,
-	rr_id INT NOT NULL,
+	r_id INT NOT NULL,
         season_year VARCHAR(20) NOT NULL,
         turn INT NOT NULL,
         PRIMARY KEY(c_id, r_id),

@@ -47,12 +47,12 @@ CREATE TABLE research(
 
 CREATE TABLE countryresearch (
         c_id INT NOT NULL,
-	res_id INT NOT NULL,
+	rr_id INT NOT NULL,
         season_year VARCHAR(20) NOT NULL,
         turn INT NOT NULL,
-        PRIMARY KEY(c_id, res_id),
+        PRIMARY KEY(c_id, r_id),
 	FOREIGN KEY(c_id) REFERENCES country(c_id),
-	FOREIGN KEY(res_id) REFERENCES research(res_id)
+	FOREIGN KEY(r_id) REFERENCES research(r_id)
 );
 INSERT INTO country(c_id, c_name, ipcs) VALUES (0, "Germany", 30);
 INSERT INTO country(c_id, c_name, ipcs) VALUES (1, "Soviet Union", 37);
@@ -85,18 +85,18 @@ INSERT INTO victorycity(v_id, v_name, isCapital, side, c_id) VALUES (16, "San Fr
 INSERT INTO victorycity(v_id, v_name, isCapital, side, c_id) VALUES (17, "Honolulu", FALSE, "Pacific", 3);
 INSERT INTO victorycity(v_id, v_name, isCapital, side, c_id) VALUES (18, "Sydney", TRUE, "Pacific", 8);
 
-INSERT INTO research(res_id, res_name) VALUES (0, "Advanced Artillery");
-INSERT INTO research(res_id, res_name) VALUES (1, "Rockets");
-INSERT INTO research(res_id, res_name) VALUES (2, "Paratroopers");
-INSERT INTO research(res_id, res_name) VALUES (3, "Increased Factory Production");
-INSERT INTO research(res_id, res_name) VALUES (4, "War bonds");
-INSERT INTO research(res_id, res_name) VALUES (5, "Improved Mechanized Infantry");
-INSERT INTO research(res_id, res_name) VALUES (6, "Super Submarines");
-INSERT INTO research(res_id, res_name) VALUES (7, "Jet Fighters");
-INSERT INTO research(res_id, res_name) VALUES (8, "Radar");
-INSERT INTO research(res_id, res_name) VALUES (9, "Improved Shipyards");
-INSERT INTO research(res_id, res_name) VALUES (10, "Long Range Aircraft");
-INSERT INTO research(res_id, res_name) VALUES (11, "Heavy Bombers");
+INSERT INTO research(r_id, r_name) VALUES (0, "Advanced Artillery");
+INSERT INTO research(r_id, r_name) VALUES (1, "Rockets");
+INSERT INTO research(r_id, r_name) VALUES (2, "Paratroopers");
+INSERT INTO research(r_id, r_name) VALUES (3, "Increased Factory Production");
+INSERT INTO research(r_id, r_name) VALUES (4, "War bonds");
+INSERT INTO research(r_id, r_name) VALUES (5, "Improved Mechanized Infantry");
+INSERT INTO research(r_id, r_name) VALUES (6, "Super Submarines");
+INSERT INTO research(r_id, r_name) VALUES (7, "Jet Fighters");
+INSERT INTO research(r_id, r_name) VALUES (8, "Radar");
+INSERT INTO research(r_id, r_name) VALUES (9, "Improved Shipyards");
+INSERT INTO research(r_id, r_name) VALUES (10, "Long Range Aircraft");
+INSERT INTO research(r_id, r_name) VALUES (11, "Heavy Bombers");
 
 
 

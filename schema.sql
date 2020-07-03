@@ -35,9 +35,8 @@ CREATE TABLE income (
 CREATE TABLE victorycity (
         v_id INT NOT NULL,
         v_name VARCHAR(15) NOT NULL,
-        isCapital BOOLEAN,
-        theater VARCHAR(10),
-        isAxis BOOLEAN,
+        isCapital BOOLEAN NOT NULL,
+        theater VARCHAR(10) NOT NULL,
         c_id INT NOT NULL,
 	PRIMARY KEY(v_id, c_id),
 	FOREIGN KEY(c_id) REFERENCES country(c_id)
@@ -68,25 +67,25 @@ INSERT INTO country(c_id, c_name, ipcs) VALUES (7, "Italy", 10);
 INSERT INTO country(c_id, c_name, ipcs) VALUES (8, "ANZAC", 10);
 INSERT INTO country(c_id, c_name, ipcs) VALUES (9, "France", 19);
 
-INSERT INTO victorycity(v_id, v_name, isCapital, side, c_id) VALUES (0, "Berlin", TRUE, "Europe", 0);
-INSERT INTO victorycity(v_id, v_name, isCapital, side, c_id) VALUES (1, "Warsaw", FALSE, "Europe", 0);
-INSERT INTO victorycity(v_id, v_name, isCapital, side, c_id) VALUES (2, "Rome", TRUE, "Europe", 7);
-INSERT INTO victorycity(v_id, v_name, isCapital, side, c_id) VALUES (3, "Paris", TRUE, "Europe", 9);
-INSERT INTO victorycity(v_id, v_name, isCapital, side, c_id) VALUES (4, "Moscow", TRUE, "Europe", 1);
-INSERT INTO victorycity(v_id, v_name, isCapital, side, c_id) VALUES (5, "Leningrad", FALSE, "Europe", 1);
-INSERT INTO victorycity(v_id, v_name, isCapital, side, c_id) VALUES (6, "Stalingrad", FALSE, "Europe", 1);
-INSERT INTO victorycity(v_id, v_name, isCapital, side, c_id) VALUES (7, "London", TRUE, "Europe", 5);
-INSERT INTO victorycity(v_id, v_name, isCapital, side, c_id) VALUES (8, "Cairo", FALSE, "Europe", 5);
-INSERT INTO victorycity(v_id, v_name, isCapital, side, c_id) VALUES (9, "Ottawa", FALSE, "Europe", 5);
-INSERT INTO victorycity(v_id, v_name, isCapital, side, c_id) VALUES (10, "Washington", TRUE, "Europe", 3);
-INSERT INTO victorycity(v_id, v_name, isCapital, side, c_id) VALUES (11, "Tokyo", TRUE, "Pacific", 2);
-INSERT INTO victorycity(v_id, v_name, isCapital, side, c_id) VALUES (12, "Shanghai", FALSE, "Pacific", 2);
-INSERT INTO victorycity(v_id, v_name, isCapital, side, c_id) VALUES (13, "Calcutta", TRUE, "Pacific", 6);
-INSERT INTO victorycity(v_id, v_name, isCapital, side, c_id) VALUES (14, "Hong Kong", FALSE, "Pacific", 6);
-INSERT INTO victorycity(v_id, v_name, isCapital, side, c_id) VALUES (15, "Manila", FALSE, "Pacific", 3);
-INSERT INTO victorycity(v_id, v_name, isCapital, side, c_id) VALUES (16, "San Francisco", FALSE, "Pacific", 3);
-INSERT INTO victorycity(v_id, v_name, isCapital, side, c_id) VALUES (17, "Honolulu", FALSE, "Pacific", 3);
-INSERT INTO victorycity(v_id, v_name, isCapital, side, c_id) VALUES (18, "Sydney", TRUE, "Pacific", 8);
+INSERT INTO victorycity(v_id, v_name, isCapital, theater, c_id) VALUES (0, "Berlin", TRUE, "Europe", 0);
+INSERT INTO victorycity(v_id, v_name, isCapital, theater, c_id) VALUES (1, "Warsaw", FALSE, "Europe", 0);
+INSERT INTO victorycity(v_id, v_name, isCapital, theater, c_id) VALUES (2, "Rome", TRUE, "Europe", 7);
+INSERT INTO victorycity(v_id, v_name, isCapital, theater, c_id) VALUES (3, "Paris", TRUE, "Europe", 9);
+INSERT INTO victorycity(v_id, v_name, isCapital, theater, c_id) VALUES (4, "Moscow", TRUE, "Europe", 1);
+INSERT INTO victorycity(v_id, v_name, isCapital, theater, c_id) VALUES (5, "Leningrad", FALSE, "Europe", 1);
+INSERT INTO victorycity(v_id, v_name, isCapital, theater, c_id) VALUES (6, "Stalingrad", FALSE, "Europe", 1);
+INSERT INTO victorycity(v_id, v_name, isCapital, theater, c_id) VALUES (7, "London", TRUE, "Europe", 5);
+INSERT INTO victorycity(v_id, v_name, isCapital, theater, c_id) VALUES (8, "Cairo", FALSE, "Europe", 5);
+INSERT INTO victorycity(v_id, v_name, isCapital, theater, c_id) VALUES (9, "Ottawa", FALSE, "Europe", 5);
+INSERT INTO victorycity(v_id, v_name, isCapital, theater, c_id) VALUES (10, "Washington", TRUE, "Europe", 3);
+INSERT INTO victorycity(v_id, v_name, isCapital, theater, c_id) VALUES (11, "Tokyo", TRUE, "Pacific", 2);
+INSERT INTO victorycity(v_id, v_name, isCapital, theater, c_id) VALUES (12, "Shanghai", FALSE, "Pacific", 2);
+INSERT INTO victorycity(v_id, v_name, isCapital, theater, c_id) VALUES (13, "Calcutta", TRUE, "Pacific", 6);
+INSERT INTO victorycity(v_id, v_name, isCapital, theater, c_id) VALUES (14, "Hong Kong", FALSE, "Pacific", 6);
+INSERT INTO victorycity(v_id, v_name, isCapital, theater, c_id) VALUES (15, "Manila", FALSE, "Pacific", 3);
+INSERT INTO victorycity(v_id, v_name, isCapital, theater, c_id) VALUES (16, "San Francisco", FALSE, "Pacific", 3);
+INSERT INTO victorycity(v_id, v_name, isCapital, theater, c_id) VALUES (17, "Honolulu", FALSE, "Pacific", 3);
+INSERT INTO victorycity(v_id, v_name, isCapital, theater, c_id) VALUES (18, "Sydney", TRUE, "Pacific", 8);
 
 INSERT INTO research(r_id, r_name) VALUES (0, "Advanced Artillery");
 INSERT INTO research(r_id, r_name) VALUES (1, "Rockets");

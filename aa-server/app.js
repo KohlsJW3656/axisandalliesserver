@@ -16,7 +16,6 @@ function rowToCountry(row) {
                 c_id: row.c_id,
                 c_name: row.c_name,
                 ipcs: row.ipcs,
-            
         };
 }
 function rowToPurchase(row){
@@ -25,7 +24,6 @@ function rowToPurchase(row){
                 amount: row.amount,
                 c_id: row.c_id,
                 cost: row.cost,
-                season_year: row.season_year,
                 turn: row.turn,
         };
 }
@@ -37,10 +35,50 @@ function rowToIncome(row) {
                 bonus: row.bonus,
                 research: row.research,
                 convoy: row.convoy,
-                season_year: row.season_year,
                 turn: row.turn,
         };
 }
+
+function rowToCountryTurn(row) {
+        return {
+                c_id: row.c_id,
+                turn: row.turn,
+                season_year: row.season_year,
+        };
+}
+
+//Grab all countryTurn
+app.get('/countryturn', (request, response) => {
+        const query = 'SELECT * FROM countryturn ORDER BY turn ASC, c_id ASC';
+	connection.query(query, (error, rows) => {
+		response.send({
+			ok: true,
+			purchase: rows.map(rowToCountryTurn),
+		});
+	});
+});
+
+//Insert into countryturn
+app.post('/countryturn', (request, response) => {
+        const query = 'INSERT INTO countryturn(c_id, turn, season_year) VALUES (?,?,?)';
+        const params = [request.body.c_id, request.body.turn, request.body.season_year];
+        connection.query(query, params, (error, result) => {
+                response.send({
+                        ok: true,
+                        c_id: result.insertId,
+                });
+        });
+});
+
+//Reset countryturn
+app.delete('/countryturn', (request, response) => {
+        const query = 'DELETE FROM countryturn';
+        connection.query(query, (error, result) => {
+                response.send({
+                        ok: true,
+                });
+        });
+});
 
 //Get country
 app.get('/country/:c_id', (request, response) => {
@@ -78,8 +116,8 @@ app.get('/purchase', (request, response) => {
 
 //Insert into purchase
 app.put('/purchase', (request, response) => {
-        const query = 'INSERT INTO purchase(p_name, amount, c_id, cost, season_year, turn) VALUES (?,?,?,?,?,?)';
-        const params = [request.body.p_name, request.body.amount, request.body.c_id, request.body.cost, request.body.season_year, request.body.turn];
+        const query = 'INSERT INTO purchase(p_name, amount, c_id, cost, turn) VALUES (?,?,?,?,?)';
+        const params = [request.body.p_name, request.body.amount, request.body.c_id, request.body.cost, request.body.turn];
         connection.query(query, params, (error, result) => {
                 response.send({
                         ok: true,
@@ -100,8 +138,8 @@ app.delete('/purchase', (request, response) => {
 
 //Insert income
 app.post('/income', (request, response) => {
-        const query ='INSERT INTO income(c_id, base, bonus, research, convoy, season_year, turn) VALUES (?,?,?,?,?,?,?)';
-        const params = [request.body.c_id, request.body.base, request.body.bonus, request.body.research, request.body.convoy, request.body.season_year, request.body.turn];
+        const query ='INSERT INTO income(c_id, base, bonus, research, convoy, turn) VALUES (?,?,?,?,?,?)';
+        const params = [request.body.c_id, request.body.base, request.body.bonus, request.body.research, request.body.convoy, request.body.turn];
         connection.query(query, params, (error, result) => {
                 response.send({
                         ok: true,

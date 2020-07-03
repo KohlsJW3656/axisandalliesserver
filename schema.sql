@@ -1,4 +1,5 @@
 DROP TABLE IF EXISTS countryresearch;
+DROP TABLE IF EXISTS countryturn;
 DROP TABLE IF EXISTS research;
 DROP TABLE IF EXISTS victorycity;
 DROP TABLE IF EXISTS income;
@@ -16,7 +17,6 @@ CREATE TABLE purchase (
         amount INT NOT NULL,
         c_id INT NOT NULL,
         cost INT NOT NULL,
-        season_year VARCHAR(20) NOT NULL,
         turn INT NOT NULL,
         PRIMARY KEY(p_name, c_id, turn),
 	FOREIGN KEY(c_id) REFERENCES country(c_id)
@@ -27,7 +27,6 @@ CREATE TABLE income (
         bonus INT NOT NULL,
         research INT NOT NULL,
         convoy INT NOT NULL,
-        season_year VARCHAR(20) NOT NULL,
         turn INT NOT NULL,
 	PRIMARY KEY(c_id, turn),
 	FOREIGN KEY(c_id) REFERENCES country(c_id)
@@ -50,12 +49,20 @@ CREATE TABLE research(
 CREATE TABLE countryresearch (
         c_id INT NOT NULL,
 	r_id INT NOT NULL,
-        season_year VARCHAR(20) NOT NULL,
         turn INT NOT NULL,
         PRIMARY KEY(c_id, r_id),
 	FOREIGN KEY(c_id) REFERENCES country(c_id),
 	FOREIGN KEY(r_id) REFERENCES research(r_id)
 );
+
+CREATE TABLE countryturn (
+        c_id INT NOT NULL,
+        turn INT NOT NULL,
+        season_year VARCHAR(20) NOT NULL,
+        PRIMARY KEY(c_id, turn),
+        FOREIGN KEY(c_id) REFERENCES country(c_id)
+);
+
 INSERT INTO country(c_id, c_name, ipcs) VALUES (0, "Germany", 30);
 INSERT INTO country(c_id, c_name, ipcs) VALUES (1, "Soviet Union", 37);
 INSERT INTO country(c_id, c_name, ipcs) VALUES (2, "Japan", 26);

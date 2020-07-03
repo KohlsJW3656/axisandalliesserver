@@ -100,7 +100,7 @@ app.delete('/purchase', (request, response) => {
 
 //Insert income
 app.post('/income', (request, response) => {
-        const query ='INSERT INTO income(c_id, base, bonus, research, convoy, season_year, turn) VALUES (?,?,?,?,?)';
+        const query ='INSERT INTO income(c_id, base, bonus, research, convoy, season_year, turn) VALUES (?,?,?,?,?,?,?)';
         const params = [request.body.c_id, request.body.base, request.body.bonus, request.body.research, request.body.convoy, request.body.season_year, request.body.turn];
         connection.query(query, params, (error, result) => {
                 response.send({

@@ -33,8 +33,10 @@ function rowToPurchase(row){
 function rowToIncome(row) {
         return {
                 c_id: row.c_id,
-                revenue: row.revenue,
-                lost: row.lost,
+                base: row.base,
+                bonus: row.bonus,
+                research: row.research,
+                convoy: row.convoy,
                 season_year: row.season_year,
                 turn: row.turn,
         };
@@ -98,8 +100,8 @@ app.delete('/purchase', (request, response) => {
 
 //Insert income
 app.post('/income', (request, response) => {
-        const query ='INSERT INTO income(c_id, revenue, lost, season_year, turn) VALUES (?,?,?,?,?)';
-        const params = [request.body.c_id, request.body.revenue, request.body.lost, request.body.season_year, request.body.turn];
+        const query ='INSERT INTO income(c_id, base, bonus, research, convoy, season_year, turn) VALUES (?,?,?,?,?)';
+        const params = [request.body.c_id, request.body.base, request.body.bonus, request.body.research, request.body.convoy, request.body.season_year, request.body.turn];
         connection.query(query, params, (error, result) => {
                 response.send({
                         ok: true,

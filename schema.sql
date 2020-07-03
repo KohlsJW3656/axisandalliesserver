@@ -23,8 +23,10 @@ CREATE TABLE purchase (
 );
 CREATE TABLE income (
         c_id INT NOT NULL,
-        revenue INT NOT NULL,
-        lost INT NOT NULL,
+        base INT NOT NULL,
+        bonus INT NOT NULL,
+        research INT NOT NULL,
+        convoy INT NOT NULL,
         season_year VARCHAR(20) NOT NULL,
         turn INT NOT NULL,
 	PRIMARY KEY(c_id, turn),
@@ -34,7 +36,8 @@ CREATE TABLE victorycity (
         v_id INT NOT NULL,
         v_name VARCHAR(15) NOT NULL,
         isCapital BOOLEAN,
-        side VARCHAR(10),
+        theater VARCHAR(10),
+        isAxis BOOLEAN,
         c_id INT NOT NULL,
 	PRIMARY KEY(v_id, c_id),
 	FOREIGN KEY(c_id) REFERENCES country(c_id)

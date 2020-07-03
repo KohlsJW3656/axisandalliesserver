@@ -53,7 +53,7 @@ app.get('/countryturn', (request, response) => {
 	connection.query(query, (error, rows) => {
 		response.send({
 			ok: true,
-			purchase: rows.map(rowToCountryTurn),
+			countryTurn: rows.map(rowToCountryTurn),
 		});
 	});
 });

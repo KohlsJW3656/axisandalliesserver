@@ -63,10 +63,17 @@ app.post('/countryturn', (request, response) => {
         const query = 'INSERT INTO countryturn(c_id, turn, season_year) VALUES (?,?,?)';
         const params = [request.body.c_id, request.body.turn, request.body.season_year];
         connection.query(query, params, (error, result) => {
-                response.send({
-                        ok: true,
-                        c_id: result.insertId,
-                });
+                if (error) {
+                        response.send({
+                                ok: true,
+                        });
+                }
+                else {
+                        response.send({
+                                ok: true,
+                                c_id: result.insertId,
+                        });
+                }
         });
 });
 

@@ -106,6 +106,3 @@ INSERT INTO research(r_id, r_name) VALUES (8, "Radar");
 INSERT INTO research(r_id, r_name) VALUES (9, "Improved Shipyards");
 INSERT INTO research(r_id, r_name) VALUES (10, "Long Range Aircraft");
 INSERT INTO research(r_id, r_name) VALUES (11, "Heavy Bombers");
-
-
-

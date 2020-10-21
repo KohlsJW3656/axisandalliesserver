@@ -184,7 +184,7 @@ app.delete('/income', (request, response) => {
         });
 });
 
-//Grab all countryresearchs
+//Grab all countryresearches
 app.get('/countryresearch', (request, response) => {
         const query = 'SELECT * FROM countryresearch ORDER BY r_id ASC, c_id ASC, turn ASC';
 	connection.query(query, (error, rows) => {
@@ -196,15 +196,22 @@ app.get('/countryresearch', (request, response) => {
 });
 
 //Insert into countryresearch
-app.put('/countryresearch', (request, response) => {
+app.post('/countryresearch', (request, response) => {
         const query = 'INSERT INTO countryresearch(c_id, r_id, turn) VALUES (?,?,?)';
         const params = [request.body.c_id, request.body.r_id, request.body.turn];
         connection.query(query, params, (error, result) => {
-                response.send({
-                        ok: true,
-                        c_id: result.insertId,
-                        r_id: result.insertId,
-                });
+                if (error) {
+                        response.send({
+                                ok: true,
+                        });
+                }
+                else {
+                        response.send({
+                                ok: true,
+                                c_id: result.insertId,
+                                r_id: result.insertId,
+                        });
+                };
         });
 });
 

@@ -47,6 +47,14 @@ function rowToCountryTurn(row) {
         };
 }
 
+function rowToCountryResearch(row) {
+        return {
+                c_id: row.c_id,
+                r_id: row.r_id,
+                turn: row.turn,
+        };
+}
+
 //Grab all countryTurn
 app.get('/countryturn', (request, response) => {
         const query = 'SELECT * FROM countryturn ORDER BY turn ASC, c_id ASC';
@@ -169,6 +177,40 @@ app.get('/income', (request, response) => {
 //Reset income
 app.delete('/income', (request, response) => {
         const query = 'DELETE FROM income';
+        connection.query(query, (error, result) => {
+                response.send({
+                        ok: true,
+                });
+        });
+});
+
+//Grab all countryresearchs
+app.get('/countryresearch', (request, response) => {
+        const query = 'SELECT * FROM countryresearch ORDER BY r_id ASC, c_id ASC, turn ASC';
+	connection.query(query, (error, rows) => {
+		response.send({
+			ok: true,
+			countryresearch: rows.map(rowToCountryResearch),
+		});
+	});
+});
+
+//Insert into countryresearch
+app.put('/countryresearch', (request, response) => {
+        const query = 'INSERT INTO countryresearch(c_id, r_id, turn) VALUES (?,?,?)';
+        const params = [request.body.c_id, request.body.r_id, request.body.turn];
+        connection.query(query, params, (error, result) => {
+                response.send({
+                        ok: true,
+                        c_id: result.insertId,
+                        r_id: result.insertId,
+                });
+        });
+});
+
+//Reset countryresearch
+app.delete('/countryresearch', (request, response) => {
+        const query = 'DELETE FROM countryresearch';
         connection.query(query, (error, result) => {
                 response.send({
                         ok: true,

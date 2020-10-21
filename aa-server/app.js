@@ -55,6 +55,8 @@ function rowToCountryResearch(row) {
         };
 }
 
+/******************************************* Country Turn *******************************************/
+
 //Grab all countryTurn
 app.get('/countryturn', (request, response) => {
         const query = 'SELECT * FROM countryturn ORDER BY turn ASC, c_id ASC';
@@ -95,6 +97,8 @@ app.delete('/countryturn', (request, response) => {
         });
 });
 
+/******************************************* Country *******************************************/
+
 //Get country
 app.get('/country/:c_id', (request, response) => {
         const params = [request.params.c_id];
@@ -117,6 +121,8 @@ app.patch('/country/:c_id', (request, response) => {
                 });
         });
 });
+
+/******************************************* Purchase *******************************************/
 
 //Grab all purchases
 app.get('/purchase', (request, response) => {
@@ -151,6 +157,8 @@ app.delete('/purchase', (request, response) => {
         });
 });
 
+/******************************************* Income *******************************************/
+
 //Insert income
 app.post('/income', (request, response) => {
         const query ='INSERT INTO income(c_id, base, bonus, research, convoy, turn) VALUES (?,?,?,?,?,?)';
@@ -184,9 +192,11 @@ app.delete('/income', (request, response) => {
         });
 });
 
+/******************************************* Country Research *******************************************/
+
 //Grab all countryresearches
 app.get('/countryresearch', (request, response) => {
-        const query = 'SELECT * FROM countryresearch ORDER BY r_id ASC, c_id ASC, turn ASC';
+        const query = 'SELECT * FROM countryresearch ORDER BY c_id ASC, r_id ASC';
 	connection.query(query, (error, rows) => {
 		response.send({
 			ok: true,
@@ -200,18 +210,10 @@ app.post('/countryresearch', (request, response) => {
         const query = 'INSERT INTO countryresearch(c_id, r_id, turn) VALUES (?,?,?)';
         const params = [request.body.c_id, request.body.r_id, request.body.turn];
         connection.query(query, params, (error, result) => {
-                if (error) {
-                        response.send({
-                                ok: true,
-                        });
-                }
-                else {
-                        response.send({
-                                ok: true,
-                                c_id: result.insertId,
-                                r_id: result.insertId,
-                        });
-                };
+                response.send({
+                        ok: true,
+                        c_id: result.insertId,
+                });
         });
 });
 

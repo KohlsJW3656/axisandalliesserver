@@ -200,7 +200,7 @@ app.get('/countryresearch', (request, response) => {
 	connection.query(query, (error, rows) => {
 		response.send({
 			ok: true,
-			countryresearch: rows.map(rowToCountryResearch),
+			countryResearch: rows.map(rowToCountryResearch),
 		});
 	});
 });

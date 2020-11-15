@@ -51,6 +51,7 @@ function rowToCountryResearch(row) {
         return {
                 c_id: row.c_id,
                 r_id: row.r_id,
+                r_name: row.r_name,
                 turn: row.turn,
         };
 }
@@ -196,7 +197,7 @@ app.delete('/income', (request, response) => {
 
 //Grab all countryresearches
 app.get('/countryresearch', (request, response) => {
-        const query = 'SELECT * FROM countryresearch ORDER BY c_id ASC, r_id ASC';
+        const query = 'SELECT countryresearch.c_id countryresearch.r_id  research.r_name countryresearch.turn FROM countryresearch INNER JOIN research ON research.r_id = countryresearch.r_id ORDER BY c_id ASC, r_id ASC';
 	connection.query(query, (error, rows) => {
 		response.send({
 			ok: true,

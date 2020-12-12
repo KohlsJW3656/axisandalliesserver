@@ -1,4 +1,5 @@
 DROP TABLE IF EXISTS countryresearch;
+DROP TABLE IF EXISTS unit;
 DROP TABLE IF EXISTS countryturn;
 DROP TABLE IF EXISTS research;
 DROP TABLE IF EXISTS victorycity;
@@ -61,6 +62,16 @@ CREATE TABLE countryturn (
         season_year VARCHAR(20) NOT NULL,
         PRIMARY KEY(c_id, turn),
         FOREIGN KEY(c_id) REFERENCES country(c_id)
+);
+
+CREATE TABLE unit (
+        u_id INT NOT NULL,
+        u_name VARCHAR(20) NOT NULL,
+        attack INT,
+        defense INT,
+        movement INT NOT NULL,
+        cost INT NOT NULL,
+        PRIMARY KEY(u_id),
 );
 
 INSERT INTO country(c_id, c_name, ipcs) VALUES (0, "Germany", 30);

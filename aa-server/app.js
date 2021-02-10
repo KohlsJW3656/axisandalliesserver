@@ -12,55 +12,55 @@ let connection = mysql.createConnection(credentials);
 connection.connect();
 
 function rowToCountry(row) {
-        return {
-                c_id: row.c_id,
-                c_name: row.c_name,
-                ipcs: row.ipcs,
-        };
+	return {
+		c_id: row.c_id,
+		c_name: row.c_name,
+		ipcs: row.ipcs,
+	};
 }
 function rowToPurchase(row){
-        return{
-                p_name: row.p_name,
-                amount: row.amount,
-                c_id: row.c_id,
-                cost: row.cost,
-                turn: row.turn,
-        };
+	return{
+		p_name: row.p_name,
+		amount: row.amount,
+		c_id: row.c_id,
+		cost: row.cost,
+		turn: row.turn,
+	};
 }
 
 function rowToIncome(row) {
-        return {
-                c_id: row.c_id,
-                base: row.base,
-                bonus: row.bonus,
-                research: row.research,
-                convoy: row.convoy,
-                turn: row.turn,
-        };
+	return {
+		c_id: row.c_id,
+		base: row.base,
+		bonus: row.bonus,
+		research: row.research,
+		convoy: row.convoy,
+		turn: row.turn,
+	};
 }
 
 function rowToCountryTurn(row) {
-        return {
-                c_id: row.c_id,
-                turn: row.turn,
-                season_year: row.season_year,
-        };
+	return {
+		c_id: row.c_id,
+		turn: row.turn,
+		season_year: row.season_year,
+	};
 }
 
 function rowToCountryResearch(row) {
-        return {
-                c_id: row.c_id,
-                r_id: row.r_id,
-                r_name: row.r_name,
-                turn: row.turn,
-        };
+	return {
+		c_id: row.c_id,
+		r_id: row.r_id,
+		r_name: row.r_name,
+		turn: row.turn,
+	};
 }
 
 /******************************************* Country Turn *******************************************/
 
 //Grab all countryTurn
 app.get('/countryturn', (request, response) => {
-        const query = 'SELECT * FROM countryturn ORDER BY turn ASC, c_id ASC';
+  const query = 'SELECT * FROM countryturn ORDER BY turn ASC, c_id ASC';
 	connection.query(query, (error, rows) => {
 		response.send({
 			ok: true,
@@ -71,38 +71,38 @@ app.get('/countryturn', (request, response) => {
 
 //Insert into countryturn
 app.post('/countryturn', (request, response) => {
-        const query = 'INSERT INTO countryturn(c_id, turn, season_year) VALUES (?,?,?)';
-        const params = [request.body.c_id, request.body.turn, request.body.season_year];
-        connection.query(query, params, (error, result) => {
-                if (error) {
-                        response.send({
-                                ok: true,
-                        });
-                }
-                else {
-                        response.send({
-                                ok: true,
-                                c_id: result.insertId,
-                        });
-                }
-        });
+	const query = 'INSERT INTO countryturn(c_id, turn, season_year) VALUES (?,?,?)';
+	const params = [request.body.c_id, request.body.turn, request.body.season_year];
+	connection.query(query, params, (error, result) => {
+    if (error) {
+			response.send({
+				ok: true,
+			});
+    }
+		else {
+			response.send({
+				ok: true,
+				c_id: result.insertId,
+			});
+		}
+  });
 });
 
 //Reset countryturn
 app.delete('/countryturn', (request, response) => {
-        const query = 'DELETE FROM countryturn';
-        connection.query(query, (error, result) => {
-                response.send({
-                        ok: true,
-                });
-        });
+  const query = 'DELETE FROM countryturn';
+  connection.query(query, (error, result) => {
+    response.send({
+      ok: true,
+    });
+  });
 });
 
 /******************************************* Country *******************************************/
 
 //Get country
 app.get('/country/:c_id', (request, response) => {
-        const params = [request.params.c_id];
+  const params = [request.params.c_id];
 	const query = 'SELECT * FROM country WHERE c_id = ? ORDER BY c_id DESC';
 	connection.query(query, params, (error, rows) => {
 		response.send({
@@ -114,20 +114,20 @@ app.get('/country/:c_id', (request, response) => {
 
 //Change ipc amount
 app.patch('/country/:c_id', (request, response) => {
-        const query = 'UPDATE country SET c_name = ?, ipcs = ? WHERE c_id = ?';
-        const params = [request.body.c_name, request.body.ipcs, request.params.c_id];
-        connection.query(query, params, (error, result) => {
-                response.send({
-                        ok: true,
-                });
-        });
+  const query = 'UPDATE country SET c_name = ?, ipcs = ? WHERE c_id = ?';
+  const params = [request.body.c_name, request.body.ipcs, request.params.c_id];
+  connection.query(query, params, (error, result) => {
+    response.send({
+      ok: true,
+    });
+  });
 });
 
 /******************************************* Purchase *******************************************/
 
 //Grab all purchases
 app.get('/purchase', (request, response) => {
-        const query = 'SELECT * FROM purchase ORDER BY turn ASC, c_id ASC, p_name ASC';
+  const query = 'SELECT * FROM purchase ORDER BY turn ASC, c_id ASC, p_name ASC';
 	connection.query(query, (error, rows) => {
 		response.send({
 			ok: true,
@@ -138,43 +138,43 @@ app.get('/purchase', (request, response) => {
 
 //Insert into purchase
 app.put('/purchase', (request, response) => {
-        const query = 'INSERT INTO purchase(p_name, amount, c_id, cost, turn) VALUES (?,?,?,?,?)';
-        const params = [request.body.p_name, request.body.amount, request.body.c_id, request.body.cost, request.body.turn];
-        connection.query(query, params, (error, result) => {
-                response.send({
-                        ok: true,
-                        c_id: result.insertId,
-                });
-        });
+  const query = 'INSERT INTO purchase(p_name, amount, c_id, cost, turn) VALUES (?,?,?,?,?)';
+  const params = [request.body.p_name, request.body.amount, request.body.c_id, request.body.cost, request.body.turn];
+  connection.query(query, params, (error, result) => {
+    response.send({
+      ok: true,
+      c_id: result.insertId,
+    });
+  });
 });
 
 //Reset purchases
 app.delete('/purchase', (request, response) => {
-        const query = 'DELETE FROM purchase';
-        connection.query(query, (error, result) => {
-                response.send({
-                        ok: true,
-                });
-        });
+  const query = 'DELETE FROM purchase';
+  connection.query(query, (error, result) => {
+    response.send({
+      ok: true,
+    });
+  });
 });
 
 /******************************************* Income *******************************************/
 
 //Insert income
 app.post('/income', (request, response) => {
-        const query ='INSERT INTO income(c_id, base, bonus, research, convoy, turn) VALUES (?,?,?,?,?,?)';
-        const params = [request.body.c_id, request.body.base, request.body.bonus, request.body.research, request.body.convoy, request.body.turn];
-        connection.query(query, params, (error, result) => {
-                response.send({
-                        ok: true,
-                        c_id: result.insertId,
-                })
-        })
-})
+  const query ='INSERT INTO income(c_id, base, bonus, research, convoy, turn) VALUES (?,?,?,?,?,?)';
+  const params = [request.body.c_id, request.body.base, request.body.bonus, request.body.research, request.body.convoy, request.body.turn];
+  connection.query(query, params, (error, result) => {
+    response.send({
+      ok: true,
+      c_id: result.insertId,
+    });
+  });
+});
 
 //Grab income
 app.get('/income', (request, response) => {
-        const query = 'SELECT * FROM income ORDER BY turn ASC, c_id ASC';
+  const query = 'SELECT * FROM income ORDER BY turn ASC, c_id ASC';
 	connection.query(query, (error, rows) => {
 		response.send({
 			ok: true,
@@ -185,19 +185,19 @@ app.get('/income', (request, response) => {
 
 //Reset income
 app.delete('/income', (request, response) => {
-        const query = 'DELETE FROM income';
-        connection.query(query, (error, result) => {
-                response.send({
-                        ok: true,
-                });
-        });
+  const query = 'DELETE FROM income';
+  connection.query(query, (error, result) => {
+    response.send({
+      ok: true,
+    });
+  });
 });
 
 /******************************************* Country Research *******************************************/
 
 //Grab all countryresearches
 app.get('/countryresearch', (request, response) => {
-        const query = 'SELECT countryresearch.c_id, countryresearch.r_id, research.r_name, countryresearch.turn FROM countryresearch INNER JOIN research ON research.r_id = countryresearch.r_id ORDER BY c_id ASC, r_id ASC';
+  const query = 'SELECT countryresearch.c_id, countryresearch.r_id, research.r_name, countryresearch.turn FROM countryresearch INNER JOIN research ON research.r_id = countryresearch.r_id ORDER BY c_id ASC, r_id ASC';
 	connection.query(query, (error, rows) => {
 		response.send({
 			ok: true,
@@ -208,24 +208,24 @@ app.get('/countryresearch', (request, response) => {
 
 //Insert into countryresearch
 app.post('/countryresearch', (request, response) => {
-        const query = 'INSERT INTO countryresearch(c_id, r_id, turn) VALUES (?,?,?)';
-        const params = [request.body.c_id, request.body.r_id, request.body.turn];
-        connection.query(query, params, (error, result) => {
-                response.send({
-                        ok: true,
-                        c_id: result.insertId,
-                });
-        });
+  const query = 'INSERT INTO countryresearch(c_id, r_id, turn) VALUES (?,?,?)';
+  const params = [request.body.c_id, request.body.r_id, request.body.turn];
+  connection.query(query, params, (error, result) => {
+    response.send({
+      ok: true,
+      c_id: result.insertId,
+    });
+  });
 });
 
 //Reset countryresearch
 app.delete('/countryresearch', (request, response) => {
-        const query = 'DELETE FROM countryresearch';
-        connection.query(query, (error, result) => {
-                response.send({
-                        ok: true,
-                });
-        });
+  const query = 'DELETE FROM countryresearch';
+  connection.query(query, (error, result) => {
+    response.send({
+      ok: true,
+    });
+  });
 });
 
 const port = 3443;

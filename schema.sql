@@ -1,79 +1,95 @@
 DROP TABLE IF EXISTS countryresearch;
 DROP TABLE IF EXISTS unit;
-DROP TABLE IF EXISTS countryturn;
+DROP TABLE IF EXISTS countryaction;
 DROP TABLE IF EXISTS research;
 DROP TABLE IF EXISTS victorycity;
 DROP TABLE IF EXISTS income;
 DROP TABLE IF EXISTS purchase;
-DROP TABLE IF EXISTS country;
+DROP TABLE IF EXISTS country; 
+
+CREATE TABLE gamemaster (
+  g_id INT NOT NULL,
+  currentcountry INT,
+  turn INT,
+  season_year VARCHAR(20),
+  PRIMARY KEY(g_id),
+  FOREIGN KEY(currentcountry) REFERENCES country(c_id)
+);
 
 CREATE TABLE country (
-        c_id INT NOT NULL,
-        c_name VARCHAR(30) NOT NULL,
-        ipcs INT NOT NULL,
+	c_id INT NOT NULL,
+	c_name VARCHAR(30) NOT NULL,
+	ipcs INT NOT NULL,
 	PRIMARY KEY(c_id)
 );
-CREATE TABLE purchase (
-        p_name VARCHAR(40),
-        amount INT NOT NULL,
-        c_id INT NOT NULL,
-        cost INT NOT NULL,
-        turn INT NOT NULL,
-        PRIMARY KEY(p_name, c_id, turn),
-	FOREIGN KEY(c_id) REFERENCES country(c_id)
-);
-CREATE TABLE income (
-        c_id INT NOT NULL,
-        base INT NOT NULL,
-        bonus INT NOT NULL,
-        research INT NOT NULL,
-        convoy INT NOT NULL,
-        turn INT NOT NULL,
+
+CREATE TABLE countryaction (
+	c_id INT NOT NULL,
+	action VARCHAR(10),
+	turn INT NOT NULL,
+	season_year VARCHAR(20) NOT NULL,
 	PRIMARY KEY(c_id, turn),
 	FOREIGN KEY(c_id) REFERENCES country(c_id)
 );
+
+CREATE TABLE unit (
+	u_id INT NOT NULL,
+	u_name VARCHAR(20) NOT NULL,
+	attack INT,
+	defense INT,
+	movement INT NOT NULL,
+	cost INT NOT NULL,
+	PRIMARY KEY(u_id)
+);
+
+CREATE TABLE purchase (
+	u_id INT NOT NULL,
+	c_id INT NOT NULL,
+	amount INT NOT NULL,
+	turn INT NOT NULL,
+	time DATE NOT NULL,
+	PRIMARY KEY(u_id, c_id, turn),
+	FOREIGN KEY(c_id) REFERENCES countryaction(c_id),
+  FOREIGN KEY(u_id) REFERENCES unit(u_id)
+);
+
+CREATE TABLE income (
+	c_id INT NOT NULL,
+	base INT NOT NULL,
+	bonus INT NOT NULL,
+	research INT NOT NULL,
+	convoy INT NOT NULL,
+	turn INT NOT NULL,
+	PRIMARY KEY(c_id, turn),
+	FOREIGN KEY(c_id) REFERENCES country(c_id)
+);
+
 CREATE TABLE victorycity (
-        v_id INT NOT NULL,
-        v_name VARCHAR(15) NOT NULL,
-        isCapital BOOLEAN NOT NULL,
-        theater VARCHAR(10) NOT NULL,
-        c_id INT NOT NULL,
+	v_id INT NOT NULL,
+	v_name VARCHAR(15) NOT NULL,
+	isCapital BOOLEAN NOT NULL,
+	theater VARCHAR(10) NOT NULL,
+	c_id INT NOT NULL,
 	PRIMARY KEY(v_id, c_id),
 	FOREIGN KEY(c_id) REFERENCES country(c_id)
 );
+
 CREATE TABLE research(
-        r_id INT NOT NULL,
-        r_name VARCHAR(30),
-        PRIMARY KEY(r_id)
+	r_id INT NOT NULL,
+	r_name VARCHAR(30),
+	PRIMARY KEY(r_id)
 );
 
 CREATE TABLE countryresearch (
-        c_id INT NOT NULL,
+	c_id INT NOT NULL,
 	r_id INT NOT NULL,
-        turn INT NOT NULL,
-        PRIMARY KEY(c_id, r_id),
+	turn INT NOT NULL,
+	PRIMARY KEY(c_id, r_id),
 	FOREIGN KEY(c_id) REFERENCES country(c_id),
 	FOREIGN KEY(r_id) REFERENCES research(r_id)
 );
 
-CREATE TABLE countryturn (
-        c_id INT NOT NULL,
-        turn INT NOT NULL,
-        season_year VARCHAR(20) NOT NULL,
-        PRIMARY KEY(c_id, turn),
-        FOREIGN KEY(c_id) REFERENCES country(c_id)
-);
-
-CREATE TABLE unit (
-        u_id INT NOT NULL,
-        u_name VARCHAR(20) NOT NULL,
-        attack INT,
-        defense INT,
-        movement INT NOT NULL,
-        cost INT NOT NULL,
-        PRIMARY KEY(u_id),
-);
-
+/******************************************* Starting Values *******************************************/
 INSERT INTO country(c_id, c_name, ipcs) VALUES (0, "Germany", 30);
 INSERT INTO country(c_id, c_name, ipcs) VALUES (1, "Soviet Union", 37);
 INSERT INTO country(c_id, c_name, ipcs) VALUES (2, "Japan", 26);
